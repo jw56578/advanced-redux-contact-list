@@ -1,3 +1,8 @@
+/**
+ * The act of changing data in a redux database is called an action
+ * an action in code is just a function that returns an object
+ */
+
 //this is totally arbitrary
 //you can call the function whatever you want
 //the important thing is that it returns an object
@@ -14,6 +19,6 @@ export function setJoke(joke){
   console.log(joke);
   return {
     type:'SET_JOKE',
-    message
+    joke
   }
 }
