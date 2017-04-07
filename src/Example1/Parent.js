@@ -13,7 +13,7 @@ class Parent extends Component {
     this.state = {message:'I love my great grand child'};
   }
   componentDidMount(){
-    //i want to tell my great grand child a joke
+    //where do you think the ajax call should be moved to ???????
     var me = this;
     fetch('http://api.icndb.com/jokes/random')
     .then(function(response) {
