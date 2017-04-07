@@ -2,10 +2,7 @@ import React, { Component } from 'react';
 import Child from './Child';
 import 'whatwg-fetch'
 /* 1) why is my great grand child not getting my joke?
- * 2) What if the Parent wants to send other things to GreatGrandChild
- * - daily news clips from Fox News
- * - pictures of cats... etc
- * this component would now have to make many other ajax calls
+ * 2) We do not want the components responsible for making ajax calls, they are only suppose to render
  * 3) why am i not getting my great grand childs message
  */
 class Parent extends Component {

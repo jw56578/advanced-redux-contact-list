@@ -5,7 +5,8 @@ class GrandChild extends Component {
   render() {
   
     var child = "";
-    // i don't want my grandparent sending my child dirty jokes
+    //we do not want components randomly preventing other components from getting the data it wants
+    //maybe child is 18 and doesn't need to be sensored by its parent
     if(this.props.message.value){
       child = <Child 
         callGreatGrandParent={this.props.callGreatGrandParent} 
