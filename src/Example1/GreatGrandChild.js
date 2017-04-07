@@ -17,10 +17,13 @@ class GreatGrandChild extends Component {
         <button value="call old grampy" type="button" onClick={()=>{
          // console.log(this.props);
           //so what do we change this to now;
-          this.props.changeMessage("i love you too");
+          this.props.changeMessage(this.state.messageToGrandDad);
           }} >
           Call old granddad
           </button>
+          <input onChange={(e)=>{
+            this.setState({messageToGrandDad:e.target.value})
+          }} />
       </div>
     );
   }
@@ -29,6 +32,8 @@ class GreatGrandChild extends Component {
 function mapDispatchToProps(dispatch){
   var actionsOnProps = {
     changeMessage:function(message){
+      //because this is being dispatched, now all the reducers will be notified that something changed
+      //and they can deal with it if they care or not
       dispatch(setMessage(message));
     },
     dosomethingelse:function(){},

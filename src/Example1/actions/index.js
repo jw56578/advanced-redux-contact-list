@@ -9,14 +9,12 @@
 // and that object has to have a property called "type" with some value that indicates
 //  what the action is doing
 export function setMessage(message){
-  console.log(message);
   return {
     type:'SET_MESSAGE',
     message
   }
 }
 export function setJoke(joke){
-  console.log(joke);
   return {
     type:'SET_JOKE',
     joke
