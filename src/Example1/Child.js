@@ -15,6 +15,3 @@ class Child extends Component {
   }
 export default Child;
 
-Child.propTypes = {
-  callGreatGrandparent: React.PropTypes.func
-};

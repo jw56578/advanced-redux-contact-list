@@ -16,5 +16,7 @@ class GreatGrandChild extends Component {
       </div>
     );
   }
-  }
+}
+
+
 export default GreatGrandChild;
