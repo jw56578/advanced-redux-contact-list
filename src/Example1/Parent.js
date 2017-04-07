@@ -3,6 +3,7 @@ import Child from './Child';
 import 'whatwg-fetch'
 /* 1) why is my great grand child not getting my joke?
  * 2) What if the Parent wants to send other things to GreatGrandChild
+ * 3) why is the parent not getting great grand childs message ?
  * - daily news clips from Fox News
  * - pictures of cats... etc
  * this component would now have to make many other ajax calls

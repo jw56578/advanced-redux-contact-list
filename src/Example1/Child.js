@@ -7,7 +7,13 @@ class Child extends Component {
       <div className="App">
         --I am Child
         <GrandChild 
-        callGreatGrandParent={this.props.callGreatGrandParent}
+        callGreatGrandParent={(message)=>{
+         //i don't want my grandchild talking to parent
+            if(message !== "i love you too"){
+              this.props.callGreatGrandParent(message);
+            }
+          }
+        }
          message={this.props.message}/>
       </div>
     );
