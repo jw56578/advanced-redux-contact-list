@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import Child from './Child';
 import 'whatwg-fetch'
-/* 1) why is my great grand child not getting my joke?
- * 2) We do not want the components responsible for making ajax calls, they are only suppose to render
- * 3) why am i not getting my great grand childs message
- */
+/*
+Okay, how does this parent say that it cares about the message that great grand child sends
+
+*/
 class Parent extends Component {
   constructor(){
     super();

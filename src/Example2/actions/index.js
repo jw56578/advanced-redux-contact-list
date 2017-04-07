@@ -10,10 +10,3 @@ export function setMessage(message){
     message
   }
 }
-export function setJoke(joke){
-  console.log(joke);
-  return {
-    type:'SET_JOKE',
-    message
-  }
-}

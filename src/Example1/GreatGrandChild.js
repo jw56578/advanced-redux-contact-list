@@ -25,18 +25,10 @@ class GreatGrandChild extends Component {
     );
   }
 }
-//the act of calling an action is called dispatching
-function mapDispatchToProps(dispatch){
-  //whatever properties are on this object will be magically put onto the components props
-  var actionsOnProps = {
-    //there will not be a property on props called changeMessage
-    changeMessage:function(message){
-      //dispatch is provided by redux, its magic, just take it for granted
-      //call our setMessage action sending in the message
 
-      //at this point setMessage is just a normal function. redux knows nothing about it
-      //dispatch tells redux that this is a special action function and to update the database
-      //with whatever it returns.
+function mapDispatchToProps(dispatch){
+  var actionsOnProps = {
+    changeMessage:function(message){
       dispatch(setMessage(message));
     },
     dosomethingelse:function(){},
@@ -45,13 +37,7 @@ function mapDispatchToProps(dispatch){
   return actionsOnProps;
 }
 
-
-//any component that cares about redux is now termed a Container
-//connect is more magic that takes the object from mapDispatchToProps
-//   and copies the properties onto the component props.
-//the first argument is null because we don't care about recieving data 
-//   only changing data
 const GreatGrandChildContainer = connect(null,mapDispatchToProps)
 (GreatGrandChild);
-//need to export our new container now
+
 export default GreatGrandChildContainer;
