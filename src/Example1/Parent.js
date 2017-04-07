@@ -37,7 +37,7 @@ class Parent extends Component {
          <p>This is now where the mesage from my great grand child will show up:
         {//the message is on props because we told redux to put it there with connect
         }
-         {this.props.message}</p>
+         {this.props.greatGrandChildMessage}</p>
       </div>
     );
   }
@@ -54,7 +54,9 @@ class Parent extends Component {
  */
 const mapStateToProps = (state) => {
   return {
-    message: state.message,
+    //greatGrandChildMessage is the name of the prop
+    //.message has to be the same name as the reducer function
+    greatGrandChildMessage: state.message,
   };
 };
 
