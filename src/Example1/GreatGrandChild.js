@@ -11,7 +11,7 @@ class GreatGrandChild extends Component {
         <button value="call old grampy" type="button" onClick={()=>{
           this.props.callGreatGrandParent("i love you too");
           }} >
-          Call old granddad
+          Call  granddad
           </button>
       </div>
     );

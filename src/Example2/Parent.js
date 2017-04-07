@@ -19,9 +19,13 @@ var store = createStore(function(){},defaultState,
 window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__());
 ////-----------------------------
 
+//we have this store variable with our database in it but its not being used
+//what is the point of that
+//the provider allows the store to be used by all your components
 class Parent extends Component {
   render() {
     return (
+      <Provider store={store}>
       <div className="App">
         I'm the parent using a Redux database
         <Child
@@ -30,6 +34,7 @@ class Parent extends Component {
          }}
          message={'I love my great grand child'}/>
       </div>
+      </Provider>
     );
   }
   }
