@@ -6,6 +6,7 @@ import 'whatwg-fetch'
  * - daily news clips from Fox News
  * - pictures of cats... etc
  * this component would now have to make many other ajax calls
+ * 3) why am i not getting my great grand childs message
  */
 class Parent extends Component {
   constructor(){
