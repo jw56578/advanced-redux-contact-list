@@ -24,6 +24,16 @@ class GreatGrandChild extends Component {
           <input onChange={(e)=>{
             this.setState({messageToGrandDad:e.target.value})
           }} />
+          <div>
+            I was told a joke
+            {
+              //when the component first loads, joke will be empty because the ajax call isn't done
+              //so we have to check for value existing
+              //when the joke gets loaded from the api it will be there
+              //need to account for this
+            }
+            <h1>{this.props.joke.value === undefined ? "" : this.props.joke.value.joke}</h1>
+          </div>
       </div>
     );
   }
@@ -32,8 +42,6 @@ class GreatGrandChild extends Component {
 function mapDispatchToProps(dispatch){
   var actionsOnProps = {
     changeMessage:function(message){
-      //because this is being dispatched, now all the reducers will be notified that something changed
-      //and they can deal with it if they care or not
       dispatch(setMessage(message));
     },
     dosomethingelse:function(){},
@@ -42,7 +50,17 @@ function mapDispatchToProps(dispatch){
   return actionsOnProps;
 }
 
-const GreatGrandChildContainer = connect(null,mapDispatchToProps)
+/**
+ * Now the great grand child cares about some data, the joke
+ * so we have to do our mapping of state to props  
+ */
+const mapStateToProps = (state) => {
+  return {
+    joke: state.joke,
+  };
+};
+//now use it in connect since we care about data now
+const GreatGrandChildContainer = connect(mapStateToProps,mapDispatchToProps)
 (GreatGrandChild);
 
 export default GreatGrandChildContainer;

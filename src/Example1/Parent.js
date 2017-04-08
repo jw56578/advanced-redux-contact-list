@@ -3,10 +3,9 @@ import { connect } from 'react-redux';
 
 import Child from './Child';
 import 'whatwg-fetch'
-/*
-Okay, how does this parent say that it cares about the message that great grand child sends
+import {loadJoke} from './actions'
 
-*/
+
 class Parent extends Component {
   constructor(){
     super();
@@ -14,15 +13,7 @@ class Parent extends Component {
   }
   componentDidMount(){
     //where do you think the ajax call should be moved to ???????
-    var me = this;
-    fetch('http://api.icndb.com/jokes/random')
-    .then(function(response) {
-      return response.json()
-    }).then(function(data) {
-      me.setState({
-        message:data
-      });
-    })
+    this.props.loadJoke();
   }
   render() {
     return (
@@ -42,26 +33,24 @@ class Parent extends Component {
     );
   }
 }
-/* eslint-disable no-console */
-
-/**
- * 
- * what we are going to do is map all the stuff from the database that we care about into the props
- * of this component
- * anytime something in the database changes, it will automtically be put into the 
- * props of this component
- * 
- */
 const mapStateToProps = (state) => {
   return {
-    //greatGrandChildMessage is the name of the prop
-    //.message has to be the same name as the reducer function
     greatGrandChildMessage: state.message,
   };
 };
 
+/**
+ * something needs to be responsible for starting the loading of joke
+ * might as well use App
+ */
+const mapDispatchToProps = (dispatch) => {
+  return {
+    loadJoke: () => {
+      dispatch(loadJoke());
+    }
+  };
+};
 
-//the connect function again does it magic to link everything up
 export default connect(
-  mapStateToProps
+  mapStateToProps,mapDispatchToProps
 )(Parent);

@@ -1,41 +1,28 @@
-/**
- * The act of caring that some data was changed is handled by a normal javascript function
- * this is very similiar to actions
- * these function are called reducers
- * 
- */
-
 import {combineReducers} from 'redux';
 
-//the state argument is the old data from the database
-//if nothing has ever happened then you need to determine what that starting state it
-//example, the message might be empty instead of null
-//you can do this with ES6 default parameters
-//state can be anything. it is up to you to decide what is used to store a message
-// if we used a string, we could never store the history of message 
-//    because it would just overwrite the last one
-// what would we use to store the history of messages????
-//action is the object from the action function we created, setMessage in this case
-//action has the new data to be inserted into the database
-// if action has data on it then return that data, else return state
-
 function message(state = '',action){
-  //When actions happen, all reducers all called, so we have to decide if we care about it
   if(action.type !== "SET_MESSAGE" || !action.message){
     return state;
   }
   return action.message;
 }
-function aJoke(state= '',action){
+//the reducer needs to handle the action of JOKE_LOADED 
+//which means that the joke has been retrieved from the server and is available
+// at this point we do not care about the action for LOAD_JOKE  because there is nothing to do
+// when you load a joke
+//this could be different, we could maybe show a message saying "getting joke" or something when the 
+//LOAD_JOKE action happens. and then make the message disappear when JOKE_LOADED happens
+function joke(state= {},action){
+  switch (action.type) {
+    case "JOKE_LOADED":
+      return action.joke;
+  }
   return state;
 }
 
-
-//all reducers need to be merge together in a special redux way
-//just take this for granted
 const rootReducer = combineReducers({
   message,
-  aJoke
+  joke
 });
 console.log(rootReducer);
 export default rootReducer;

@@ -1,22 +1,37 @@
-/**
- * The act of changing data in a redux database is called an action
- * an action in code is just a function that returns an object
- */
+import 'whatwg-fetch'
 
-//this is totally arbitrary
-//you can call the function whatever you want
-//the important thing is that it returns an object
-// and that object has to have a property called "type" with some value that indicates
-//  what the action is doing
 export function setMessage(message){
   return {
     type:'SET_MESSAGE',
     message
   }
 }
-export function setJoke(joke){
+/**
+ * Actions are responsible for making ajax calls
+ * we have to do something special because it is an async call
+ * you return a function instead of an object
+ */
+export function loadJoke(){
+  return function (dispatch){
+    dispatch({
+      type: "LOAD_JOKE"
+    });
+    fetch('http://api.icndb.com/jokes/random')
+    .then(function(response) {
+      return response.json();
+    }).then(function(jokejson) {
+      dispatch(jokeLoaded(jokejson));
+    });
+  };
+}
+/*because of async we have to break up the action into 2 parts
+part 1 is the start of the ajax call
+part 2 is when the ajax call is done
+we do this because with async we have no idea when it will be done so it has to be in 2 stages
+ */
+export function jokeLoaded(joke) {
   return {
-    type:'SET_JOKE',
+    type: "JOKE_LOADED",
     joke
-  }
+  };
 }
