@@ -9,7 +9,7 @@ function Parent() {
         callGreatGrandParent={(msg)=>{
             alert(msg);
         }}
-        message={'I love my great grand child'}/>
+        message={'dirty joke'}/>
     </div>
   );
 }

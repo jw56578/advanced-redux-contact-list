@@ -6,7 +6,11 @@ function GrandChild(props) {
     <div className="App">
       ---I am Grand Child
       <Child 
-      callGreatGrandParent={props.callGreatGrandParent} 
+      callGreatGrandParent={
+        ()=>{
+          props.callGreatGrandParent('you are okay i guess');
+        }
+      } 
       message={props.message}/>
     </div>
   );
