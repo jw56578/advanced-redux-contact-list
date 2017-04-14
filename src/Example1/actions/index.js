@@ -8,17 +8,17 @@
 //the important thing is that it returns an object
 // and that object has to have a property called "type" with some value that indicates
 //  what the action is doing
-export function setMessage(message){
+export function setChildMessage(message){
   console.log(message);
   return {
-    type:'SET_MESSAGE',
-    message
+    type:'SET_CHILD_MESSAGE',
+    message:message
   }
 }
-export function setJoke(joke){
-  console.log(joke);
+export function setParentMessage(message){
+  console.log(message);
   return {
-    type:'SET_JOKE',
-    joke
+    type:'SET_PARENT_MESSAGE',
+    message:message
   }
 }
