@@ -7,7 +7,7 @@ function GreatGrandChild (props) {
       does my great grand parent love me:
       <h1>{props.message}</h1>
       <button value="call old grampy" type="button" onClick={()=>{
-        props.callGreatGrandParent("i love you too");
+        props.callGreatGrandParent("hi great grand parent");
         }} >
         Call old granddad
         </button>
