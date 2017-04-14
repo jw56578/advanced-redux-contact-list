@@ -1,12 +1,17 @@
 /**
- * The act of caring that some data was changed is handled by a normal javascript function
- * this is very similiar to actions
+ * For each piece of data in your store that something could care about you must create 
+ * a function for it.
+ * functions are used so that they can return something, the data 
+ * The function should be named the same as the state to make sense, 
+ * even though its not required
+ * components use these functions to tell redux that it cares when this data changes
  * these function are called reducers
  */
 
 import {combineReducers} from 'redux';
 
 //the state argument is the old data from the database
+//the action is used to put the new data into the database
 //if nothing has ever happened then you need to determine what that starting state it
 //example, the message might be empty instead of null
 //you can do this with ES6 default parameters
