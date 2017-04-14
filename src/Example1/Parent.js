@@ -10,9 +10,8 @@ function Parent() {
         callGreatGrandParent={(msg)=>{
             alert(msg);
         }}
-        message={this.state.message}/>
+        message={"dirty joke"}/>
     </div>
   );
-
 }
 export default Parent;

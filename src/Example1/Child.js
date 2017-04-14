@@ -1,24 +1,28 @@
 import React, { Component } from 'react';
 import GrandChild from './GrandChild';
 
-class Child extends Component {
-  render() {
-    return (
-      <div className="App">
-        --I am Child
-        <GrandChild 
-        callGreatGrandParent={(msg)=>{
-          //we do not want components randomly preventing other components from getting the data it wants
-          //great grand child should be able to talk to parent if it wants to
-
-          if(msg !== "i love you too"){
-            this.props.callGreatGrandParent(msg);
+function Child(props) {
+  var message = props.message;
+  if(message === "dirty joke"){
+    message = "sensored";
+  }
+  return (
+    <div className="App">
+      --I am Child
+      <GrandChild 
+      callGreatGrandParent={(message)=>{
+        //i don't want my grandchild talking to parent
+          if(message !== "i love you too"){
+            props.callGreatGrandParent(message);
           }
-        }}
-         message={this.props.message}/>
-      </div>
-    );
-  }
-  }
+          else{
+            props.callGreatGrandParent("message intercepted");
+          }
+        }
+      }
+        message={message}/>
+    </div>
+  );
+}
 export default Child;
 
