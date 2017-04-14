@@ -13,10 +13,10 @@ import {Provider} from 'react-redux';
 
 
 ////// step 1 - create your database ////////
-//this is so simple, all we have is a message and joke
+//this is so simple, all we have is a message from child and message from parent
 const defaultState = {
-  message:'',
-  joke: ''
+  messageFromChild:'',
+  messageFromParent: ''
 }
 var store = createStore(function(){},defaultState,
 //need to do this weird stuff in order to use redux dev tools
