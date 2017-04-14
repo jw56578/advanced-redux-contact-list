@@ -6,8 +6,8 @@ import {createStore} from 'redux';
 import {Provider} from 'react-redux';
 import rootReducer from './Example1/reducers';
 const defaultState = {
-  message:'',
-  joke: ''
+  childMessage:'',
+  parentMessage: ''
 }
 //okay now we need to give the reducers to the store
 //the store needs to know all the functions which represent wanted to know when data has change

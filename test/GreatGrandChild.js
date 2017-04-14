@@ -16,9 +16,7 @@ function GreatGrandChild(props) {
       <button value="call old grampy" type="button" onClick={()=>{
         // console.log(this.props);
         //so what do we change this to now;
-        props.changeMessage("dont' censor me");
-        //props.dosomethingelse
-        //props.domorestuff
+        props.changeMessage("i love you too");
         }} >
         Call old granddad
         </button>
@@ -51,6 +49,7 @@ function mapDispatchToProps(dispatch){
 //   and copies the properties onto the component props.
 //the first argument is null because we don't care about recieving data 
 //   only changing data
-const GreatGrandChildContainer = connect(null,mapDispatchToProps)(GreatGrandChild);
+const GreatGrandChildContainer = connect(null,mapDispatchToProps)
+(GreatGrandChild);
 //need to export our new container now
 export default GreatGrandChildContainer;

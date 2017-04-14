@@ -7,41 +7,24 @@ import 'whatwg-fetch'
 Okay, how does this parent say that it cares about the message that great grand child sends
 
 */
-class Parent extends Component {
-  constructor(){
-    super();
-    this.state = {message:'I love my great grand child'};
-  }
-  componentDidMount(){
-    //where do you think the ajax call should be moved to ???????
-    var me = this;
-    fetch('http://api.icndb.com/jokes/random')
-    .then(function(response) {
-      return response.json()
-    }).then(function(data) {
-      me.setState({
-        message:data
-      });
-    })
-  }
-  render() {
-    return (
-      <div className="App">
-        I'm the parent
-        <Child
-         callGreatGrandParent={(msg)=>{
-           //we cannot use this function anymore because we aren't doing callbacks anymore
-              alert(msg);
-         }}
-         message={this.state.message}/>
-         <p>This is now where the mesage from my great grand child will show up:
-        {//the message is on props because we told redux to put it there with connect
-        }
-         {this.props.greatGrandChildMessage}</p>
-      </div>
-    );
-  }
+function Parent(props) {
+  return (
+    <div className="App">
+      I'm the parent
+      <Child
+        callGreatGrandParent={(msg)=>{
+          //we cannot use this function anymore because we aren't doing callbacks anymore
+            alert(msg);
+        }}
+        message={"dirty joke"}/>
+        <p>This is now where the mesage from my great grand child will show up:
+      {//the message is on props because we told redux to put it there with connect
+      }
+        {props.greatGrandChildMessage}</p>
+    </div>
+  );
 }
+
 /* eslint-disable no-console */
 
 /**
@@ -56,7 +39,7 @@ const mapStateToProps = (state) => {
   return {
     //greatGrandChildMessage is the name of the prop
     //.message has to be the same name as the reducer function
-    greatGrandChildMessage: state.message,
+    greatGrandChildMessage: state.childMessage,
   };
 };
 

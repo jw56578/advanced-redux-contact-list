@@ -2,7 +2,6 @@
  * The act of caring that some data was changed is handled by a normal javascript function
  * this is very similiar to actions
  * these function are called reducers
- * 
  */
 
 import {combineReducers} from 'redux';
@@ -15,18 +14,18 @@ import {combineReducers} from 'redux';
 // if we used a string, we could never store the history of message 
 //    because it would just overwrite the last one
 // what would we use to store the history of messages????
-//action is the object from the action function we created, setMessage in this case
+//action is the object from the action function we created, setChildMessage in this case
 //action has the new data to be inserted into the database
 // if action has data on it then return that data, else return state
 
-function message(state = '',action){
+function childMessage(state = '',action){
   //When actions happen, all reducers all called, so we have to decide if we care about it
-  if(action.type !== "SET_MESSAGE" || !action.message){
+  if(action.type !== "SET_CHILD_MESSAGE" || !action.message){
     return state;
   }
   return action.message;
 }
-function aJoke(state= '',action){
+function parentMessage(state= '',action){
   return state;
 }
 
@@ -34,8 +33,8 @@ function aJoke(state= '',action){
 //all reducers need to be merge together in a special redux way
 //just take this for granted
 const rootReducer = combineReducers({
-  message,
-  aJoke
+  childMessage,
+  parentMessage
 });
 console.log(rootReducer);
 export default rootReducer;
